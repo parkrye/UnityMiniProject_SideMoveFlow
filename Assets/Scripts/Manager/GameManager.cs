@@ -24,7 +24,9 @@ public class GameManager : MonoBehaviour
     }
 
     static DataManager dataManager;
-    public DataManager Data { get { return dataManager; } }
+
+    public static GameManager Instance { get { return instance; } }
+    public static DataManager Data { get { return dataManager; } }
 
     void InitializeManager()
     {

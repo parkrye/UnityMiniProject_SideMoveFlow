@@ -1,47 +1,26 @@
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour, IHitable, ITimeScalable
 {
+    [SerializeField] int index;
     CharacterData characterData;
 
-    Equipment[] equipments;
+    [SerializeField] Animator animator;
 
     void Awake()
     {
-        equipments = new Equipment[2];
+        characterData = GameManager.Data.Party[index];
+        characterData.Avatar = this;
+        animator = GetComponentInChildren<Animator>();
     }
 
-    public void EquipEquipment(int index, Equipment equipment)
+    public void Hit(int damage)
     {
-        equipments[index] = equipment;
+        characterData.Status[1] -= damage;
     }
 
-    public void RemoveEquipment(int index)
+    public void ChangeTimeScaleAction(float timeScale)
     {
-        equipments[index] = null;
-    }
-
-    public int GetStatus(int index)
-    {
-        if (characterData == null)
-            return -1;
-
-        float returnValue = characterData.status[index];
-
-        for(int i = 0; i < 2; i++)
-        {
-            if (equipments[i] == null)
-                continue;
-
-            if (equipments[i].GetEquipmentIndex() != index)
-                continue;
-
-            if (equipments[i].GetEquipmentRate() < 0)
-                continue;
-
-            returnValue *= equipments[i].GetEquipmentRate();
-        }
-
-        return (int)returnValue;
+        animator.speed = timeScale;
     }
 }

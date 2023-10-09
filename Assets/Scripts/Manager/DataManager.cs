@@ -1,36 +1,29 @@
+using System;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    [SerializeField] float timeLimit;
-    Character[] party;
+    CharacterData[] party;
 
-    public float TimeLimit { get { return timeLimit; } }
-    public Character[] Party { get {  return party; } }
+    public CharacterData[] Party { get {  return party; } }
 
     public void Initialize()
     {
-        party = new Character[6];
+        party = new CharacterData[4];
+
+        party[0] = new CharacterData(1, 100, 10, 100, AttackPosition.Front);
+        party[1] = new CharacterData(2, 100, 10, 100, AttackPosition.Middle);
+        party[2] = new CharacterData(3, 100, 10, 400, AttackPosition.Middle);
+        party[3] = new CharacterData(4, 100, 10, 400, AttackPosition.Back);
     }
 
-    public void SettingLimitTime(float _time)
+    public void ResetData()
     {
-        timeLimit = _time;
-    }
+        party[0] = new CharacterData(1, 100, 10, 100, AttackPosition.Front);
+        party[1] = new CharacterData(2, 100, 10, 100, AttackPosition.Middle);
+        party[2] = new CharacterData(3, 100, 10, 400, AttackPosition.Middle);
+        party[3] = new CharacterData(4, 100, 10, 400, AttackPosition.Back);
 
-    public void AddParty(int index, Character character)
-    {
-        if (index < 0 || index >= 6)
-            return;
-
-        party[index] = character;
-    }
-
-    public void RemoveParty(int index)
-    {
-        if (index < 0 || index >= 6 || party[index] == null)
-            return;
-
-        party[index] = null;
+        GC.Collect();
     }
 }
