@@ -678,17 +678,17 @@ PrefabInstance:
     - target: {fileID: 5165387507469470007, guid: 36f69c499e9beff438352a0ae8a49c31,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.4469604
+      value: 210.0726
       objectReference: {fileID: 0}
     - target: {fileID: 5165387507469470007, guid: 36f69c499e9beff438352a0ae8a49c31,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.7263007
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5165387507469470007, guid: 36f69c499e9beff438352a0ae8a49c31,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.339346
+      value: 1.9049749
       objectReference: {fileID: 0}
     - target: {fileID: 5165387507469470007, guid: 36f69c499e9beff438352a0ae8a49c31,
         type: 3}
@@ -928,6 +928,26 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!1 &126810247 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2760370130004711331, guid: 36f69c499e9beff438352a0ae8a49c31,
+    type: 3}
+  m_PrefabInstance: {fileID: 126810243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &126810248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126810247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f1aa4a9ce29f1644aec7deb5539986c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTagName: Enemy
+  obstacleTagName: Obstacle
 --- !u!1001 &137323933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2279,7 +2299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364825911}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 211.3326, y: -5.7263007, z: -10.434371}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3246,17 +3266,17 @@ PrefabInstance:
     - target: {fileID: 5165387507469470007, guid: da6b08ee90d001f44a5791fb5f685bbb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.044098
+      value: 215.3767
       objectReference: {fileID: 0}
     - target: {fileID: 5165387507469470007, guid: da6b08ee90d001f44a5791fb5f685bbb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.7263007
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5165387507469470007, guid: da6b08ee90d001f44a5791fb5f685bbb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 14.338451
+      value: 3.9040804
       objectReference: {fileID: 0}
     - target: {fileID: 5165387507469470007, guid: da6b08ee90d001f44a5791fb5f685bbb,
         type: 3}
@@ -3496,6 +3516,26 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!1 &456708473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2760370130004711331, guid: da6b08ee90d001f44a5791fb5f685bbb,
+    type: 3}
+  m_PrefabInstance: {fileID: 456708469}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &456708474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456708473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f1aa4a9ce29f1644aec7deb5539986c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTagName: Enemy
+  obstacleTagName: Obstacle
 --- !u!1 &458493484
 GameObject:
   m_ObjectHideFlags: 0
@@ -5852,6 +5892,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5925,6 +5966,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -160, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ef7859a55a78c48891451d4e2e7fd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &972504230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7878,17 +7931,17 @@ PrefabInstance:
     - target: {fileID: 5165387507469470007, guid: 58f9f1204c3862749aa7108e2096898b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.8812408
+      value: 210.20259
       objectReference: {fileID: 0}
     - target: {fileID: 5165387507469470007, guid: 58f9f1204c3862749aa7108e2096898b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.7263007
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5165387507469470007, guid: 58f9f1204c3862749aa7108e2096898b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.409682
+      value: -2.0246887
       objectReference: {fileID: 0}
     - target: {fileID: 5165387507469470007, guid: 58f9f1204c3862749aa7108e2096898b,
         type: 3}
@@ -8128,6 +8181,26 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!1 &1427968849 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2760370130004711331, guid: 58f9f1204c3862749aa7108e2096898b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1427968845}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1427968850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427968849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f1aa4a9ce29f1644aec7deb5539986c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTagName: Enemy
+  obstacleTagName: Obstacle
 --- !u!1001 &1453048468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9712,17 +9785,17 @@ PrefabInstance:
     - target: {fileID: 5165387507469470007, guid: 3cc780c0f89dc20428023a75f395d620,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.6576843
+      value: 215.99028
       objectReference: {fileID: 0}
     - target: {fileID: 5165387507469470007, guid: 3cc780c0f89dc20428023a75f395d620,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.7263007
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5165387507469470007, guid: 3cc780c0f89dc20428023a75f395d620,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.871794
+      value: 0.43742275
       objectReference: {fileID: 0}
     - target: {fileID: 5165387507469470007, guid: 3cc780c0f89dc20428023a75f395d620,
         type: 3}
@@ -9962,6 +10035,26 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!1 &1749582292 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2760370130004711331, guid: 3cc780c0f89dc20428023a75f395d620,
+    type: 3}
+  m_PrefabInstance: {fileID: 1749582288}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1749582293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749582292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f1aa4a9ce29f1644aec7deb5539986c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyTagName: Enemy
+  obstacleTagName: Obstacle
 --- !u!1001 &1762879967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10649,6 +10742,7 @@ MonoBehaviour:
   gameState: 0
   timer: {fileID: 2075227636}
   ui: {fileID: 2075227635}
+  cam: {fileID: 963194229}
 --- !u!114 &2075227635
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,30 +10,30 @@ public class MainSceneTimer : MonoBehaviour
     // 3: reverse 60
     // 4: timeLimit
     public float[] times { get; private set; }
-
     [SerializeField] TMP_Text timeText;
 
     UnityEvent<float> timeScaleChangeEvent;
+
+    bool start;
 
     void Awake()
     {
         times = new float[] { 0f, 5f, 1f, 1f / 60f, 300f };
         timeScaleChangeEvent = new UnityEvent<float>();
+        start = false;
     }
+
     void Update()
     {
         times[0] += Time.deltaTime * times[2];
+        if (!start)
+            return;
         timeText.text = $"{((int)((times[4] - times[0]) * times[3])).ToString()}:{((int)((times[4] - times[0]) % 60)).ToString()}";
     }
 
     public void ChangeTimeScale(float time)
     {
-        if (time < 1f)
-        {
-            times[2] = time;
-            timeScaleChangeEvent?.Invoke(times[2]);
-            return;
-        }
+        Debug.Log($"{name} : {time}");
 
         times[2] = time;
         timeScaleChangeEvent?.Invoke(times[2]);
@@ -54,6 +54,8 @@ public class MainSceneTimer : MonoBehaviour
         if (times[0] > times[1])
         {
             times[0] = 0f;
+            start = true;
+            ChangeTimeScale(1f);
             return true;
         }
         return false;
