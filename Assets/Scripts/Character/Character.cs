@@ -1,21 +1,29 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Character : MonoBehaviour, IHitable, ITimeScalable
 {
     [SerializeField] int index;
     CharacterData characterData;
+    CharacterStateDialog characterStateDialog;
     Animator animator;
 
     bool start;
     float speed;
     Vector3 moveDir;
+    CharacterState state;
+
+    UnityEvent<CharacterState> stateEvent;
 
     void Awake()
     {
         characterData = GameManager.Data.Party[index];
         characterData.Avatar = this;
         animator = GetComponentInChildren<Animator>();
+        characterStateDialog = GetComponentInChildren<CharacterStateDialog>();
         start = false;
+        stateEvent = new UnityEvent<CharacterState>();
+        stateEvent.AddListener(characterStateDialog.ChangeStateText);
     }
 
     public void Hit(int damage)
