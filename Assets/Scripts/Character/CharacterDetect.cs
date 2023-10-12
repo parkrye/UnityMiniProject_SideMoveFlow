@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CharacterDetect : MonoBehaviour
 {
     [SerializeField] string enemyTagName, obstacleTagName;
 
+    UnityEvent enemyDetectEvent;
     List<Obstacle> obstacles;
     List<Enemy> enemies;
 
@@ -12,6 +14,12 @@ public class CharacterDetect : MonoBehaviour
     {
         obstacles = new List<Obstacle>(10);
         enemies = new List<Enemy>(10);
+        enemyDetectEvent = new UnityEvent();
+    }
+
+    public void AddEventListener(UnityAction action)
+    {
+        enemyDetectEvent.AddListener(action);
     }
 
     public Obstacle GetNearestObstacle()
@@ -63,6 +71,7 @@ public class CharacterDetect : MonoBehaviour
         if (other.CompareTag(enemyTagName))
         {
             enemies.Add(other.GetComponent<Enemy>());
+            enemyDetectEvent?.Invoke();
         }
         else if (other.CompareTag(obstacleTagName))
         {
@@ -76,7 +85,7 @@ public class CharacterDetect : MonoBehaviour
         {
             try
             {
-                enemies.Remove(other.GetComponent<Enemy>());
+                enemies?.Remove(other.GetComponent<Enemy>());
             }
             catch
             {
@@ -87,7 +96,7 @@ public class CharacterDetect : MonoBehaviour
         {
             try
             {
-                obstacles.Remove(other.GetComponent<Obstacle>());
+                obstacles?.Remove(other.GetComponent<Obstacle>());
             }
             catch
             {

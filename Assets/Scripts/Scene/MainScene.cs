@@ -1,19 +1,20 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MainScene : MonoBehaviour
 {
     public static MainScene instance;
 
     [SerializeField] GameState gameState;
-    public GameState State { get { return gameState; } set { gameState = value; } }
 
     [SerializeField] MainSceneTimer timer;
     [SerializeField] MainSceneUI ui;
     [SerializeField] CameraMovement cam;
 
     public MainSceneTimer Timer { get { return timer; } }
+    UnityEvent<GameState> GameStateEvent;
 
-    private void Awake()
+    void Awake()
     {
         if(instance != null)
         {
@@ -23,9 +24,10 @@ public class MainScene : MonoBehaviour
 
         instance = this;
         gameState = GameState.Ready;
+        GameStateEvent = new UnityEvent<GameState>();
     }
 
-    private void Start()
+    void Start()
     {
         for (int i = 0; i < 4; i++)
         {
@@ -47,18 +49,29 @@ public class MainScene : MonoBehaviour
                     }
                     cam.StartMove();
 
-                    State = GameState.Move;
+                    gameState = GameState.Move;
+                    GameStateEvent?.Invoke(gameState);
                 }
                 return;
             case GameState.Battle:
                 cam.ChangeMode(false);
                 if (timer.TimeOver())
                 {
-                    State = GameState.Done;
+                    gameState = GameState.Done;
+                    GameStateEvent?.Invoke(gameState);
                 }
                 break;
             case GameState.Move:
-                cam.ChangeMode(true);
+                if (timer.TimeOver())
+                {
+                    cam.ChangeMode(false);
+                    gameState = GameState.Done;
+                    GameStateEvent?.Invoke(gameState);
+                }
+                else
+                {
+                    cam.ChangeMode(true);
+                }
                 break;
             default:
             case GameState.Done:

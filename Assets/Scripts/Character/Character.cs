@@ -6,6 +6,7 @@ public class Character : MonoBehaviour, IHitable, ITimeScalable
     [SerializeField] int index;
     CharacterData characterData;
     CharacterStateDialog characterStateDialog;
+    CharacterDetect characterDetect;
     Animator animator;
 
     bool start;
@@ -21,9 +22,11 @@ public class Character : MonoBehaviour, IHitable, ITimeScalable
         characterData.Avatar = this;
         animator = GetComponentInChildren<Animator>();
         characterStateDialog = GetComponentInChildren<CharacterStateDialog>();
+        characterDetect = GetComponentInChildren<CharacterDetect>();
         start = false;
         stateEvent = new UnityEvent<CharacterState>();
         stateEvent.AddListener(characterStateDialog.ChangeStateText);
+        characterDetect.AddEventListener(FindEnemy);
     }
 
     public void Hit(int damage)
@@ -55,5 +58,10 @@ public class Character : MonoBehaviour, IHitable, ITimeScalable
 
         transform.LookAt(transform.position + moveDir);
         transform.Translate(moveDir, Space.World);
+    }
+
+    void FindEnemy()
+    {
+
     }
 }
